@@ -6,6 +6,7 @@ A simple terminal game that shows a Bible verse reference and a verse with one m
 
 - `play_verse_game.py` - game script
 - `verses.csv` - verse data in CSV format
+- `api_sqlite_game/` - API-based game using SQLite cache instead of CSV
 
 ## CSV format
 
