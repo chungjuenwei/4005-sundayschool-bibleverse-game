@@ -19,6 +19,16 @@ Each row in `verses.csv` uses four columns:
 
 The game asks you to pick a difficulty level before starting.
 
+## SQLite conversion
+
+The `SUPER DUPER DIFFICULT` mode uses `bible_NKJV.db` for random NKJV verse selection. If the database is missing, run:
+
+```powershell
+python .\convert_bible_nkjv_to_sqlite.py
+```
+
+This creates `bible_NKJV.db` from `bible_NKJV.csv` and adds a version/language index for faster lookups.
+
 ## Run the game
 
 Open PowerShell, change folder to the repo, then run:
