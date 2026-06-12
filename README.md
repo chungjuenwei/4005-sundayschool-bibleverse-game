@@ -6,7 +6,6 @@ A simple terminal game that shows a Bible verse reference and a verse with one m
 
 - `play_verse_game.py` - game script
 - `verses.csv` - verse data in CSV format
-- `api_sqlite_game/` - API-based game using SQLite cache instead of CSV
 
 ## CSV format
 
@@ -38,3 +37,10 @@ python .\play_verse_game.py
 ```
 
 Type the missing word and press Enter. If the answer is wrong, the game prompts you to try again.
+
+## References
+The csv file was found from this repo. 
+
+It also contains other versions other than NKJV, which could be useful for other projects.
+
+https://github.com/alshival/super_bible/tree/main/SUPER_BIBLE/version_files
