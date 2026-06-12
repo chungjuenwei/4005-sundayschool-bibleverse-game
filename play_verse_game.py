@@ -252,11 +252,16 @@ def main():
 
     difficulty = select_difficulty()
     if difficulty == "hard":
-        reference, verse, answer, verse_difficulty = load_super_verse(SUPER_BIBLE_DB_FILE)
         print("Bible Verse Lookup Challenge")
         print("Read the reference, look up the verse in your Bible, and fill the blank word.")
-        print("Difficulty selected: SUPER DUPER DIFFICULT\n")
-        ask_question(reference, verse, answer, verse_difficulty)
+        print("Difficulty selected: SUPER DUPER DIFFICULT — 10 verses!\n")
+
+        for verse_num in range(1, 11):
+            reference, verse, answer, verse_difficulty = load_super_verse(SUPER_BIBLE_DB_FILE)
+            print(f"Verse {verse_num} of 10")
+            ask_question(reference, verse, answer, verse_difficulty)
+
+        print("🔥 Wow! You nailed all 10 SUPER DUPER DIFFICULT verses!")
         return
 
     if difficulty != "all":
