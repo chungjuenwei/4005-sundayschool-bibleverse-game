@@ -190,22 +190,22 @@ def load_super_verse(path: pathlib.Path):
 def select_difficulty() -> str:
     while True:
         clear_screen()
-        print("Bible Verse Memory Game")
+        print("Bible Verse Lookup Challenge")
         print("Choose a difficulty level to begin your practice.")
         print("1) easy               - quick start and familiar verses")
         print("2) medium             - helpful lookup practice")
         print("3) SUPER DUPER DIFFICULT - extreme random NKJV challenge")
-        print("4) all                - mixed practice")
+        # print("4) all                - mixed practice")
 
-        choice = input("Choose 1-4 or type easy/medium/hard/all: ").strip().lower()
+        choice = input("Choose 1-3 or type easy/medium/hard: ").strip().lower()
         if choice in {"1", "easy"}:
             return "easy"
         if choice in {"2", "medium"}:
             return "medium"
         if choice in {"3", "hard", "super", "super duper", "super duper difficult"}:
             return "hard"
-        if choice in {"4", "all"}:
-            return "all"
+        # if choice in {"4", "all"}:
+        #     return "all"
 
         print("Invalid choice. Press Enter to try again.")
         input()
@@ -217,7 +217,7 @@ def ask_question(reference: str, verse: str, answer: str, difficulty: str) -> No
 
     while True:
         clear_screen()
-        print("Bible Verse Memory Game")
+        print("Bible Verse Lookup Challenge")
         print("Read the reference, look up the verse in your Bible, and fill the blank word.")
 
         if message:
@@ -253,7 +253,7 @@ def main():
     difficulty = select_difficulty()
     if difficulty == "hard":
         reference, verse, answer, verse_difficulty = load_super_verse(SUPER_BIBLE_DB_FILE)
-        print("Bible Verse Memory Game")
+        print("Bible Verse Lookup Challenge")
         print("Read the reference, look up the verse in your Bible, and fill the blank word.")
         print("Difficulty selected: SUPER DUPER DIFFICULT\n")
         ask_question(reference, verse, answer, verse_difficulty)
@@ -266,7 +266,7 @@ def main():
         print(f"No verses found for difficulty '{difficulty}'.")
         return
 
-    print("Bible Verse Memory Game")
+    print("Bible Verse Lookup Challenge")
     print("Read the reference, look up the verse in your Bible, and fill the blank word.")
     print(f"Difficulty selected: {difficulty}\n")
 
