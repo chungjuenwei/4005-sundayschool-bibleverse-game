@@ -140,7 +140,7 @@ def choose_blank_word(text: str) -> str:
 
 
 def format_verse_with_blank(text: str, blank_word: str) -> str:
-    placeholder = "[" + "_" * len(blank_word) + "]"
+    placeholder = "_" * len(blank_word)
     blank_pattern = re.compile(rf"\b{re.escape(blank_word)}\b", re.IGNORECASE)
     return blank_pattern.sub(placeholder, text, count=1)
 
@@ -192,11 +192,11 @@ def select_difficulty() -> str:
         clear_screen()
         print("Bible Verse Lookup Challenge")
         print("Choose a difficulty level to begin your practice.")
-        print("1) easy               - quick start and familiar verses")
-        print("2) medium             - helpful lookup practice")
-        print("3) SUPER DUPER DIFFICULT - extreme random NKJV challenge")
-        # print("4) all                - mixed practice")
-
+        print("")
+        print("1) easy                     -> quick start, familiar verses")
+        print("2) medium                   -> helpful lookup practice")
+        print("3) SUPER DUPER DIFFICULT    -> random NKJV verse")
+        print("")
         choice = input("Choose 1-3 or type easy/medium/hard: ").strip().lower()
         if choice in {"1", "easy"}:
             return "easy"
@@ -219,11 +219,14 @@ def ask_question(reference: str, verse: str, answer: str, difficulty: str) -> No
         clear_screen()
         print("Bible Verse Lookup Challenge")
         print("Read the reference, look up the verse in your Bible, and fill the blank word.")
+        print("")
+        print(f"[Difficulty: {difficulty}]")
+
 
         if message:
             print(f"\n{message}")
 
-        print(f"\n{reference}    [difficulty: {difficulty}]")
+        print(f"\n{reference}")
         print(verse)
         print("")
         guess = input("Enter the missing word (or type 'quit' to exit): ").strip()
@@ -233,7 +236,8 @@ def ask_question(reference: str, verse: str, answer: str, difficulty: str) -> No
             continue
 
         if guess.lower() == "quit":
-            print("Goodbye. Come back soon.")
+            print("")
+            print("Hope you enjoyed the game!")
             sys.exit(0)
 
         if normalize(guess) == expected:
@@ -252,11 +256,16 @@ def main():
 
     difficulty = select_difficulty()
     if difficulty == "hard":
-        reference, verse, answer, verse_difficulty = load_super_verse(SUPER_BIBLE_DB_FILE)
         print("Bible Verse Lookup Challenge")
         print("Read the reference, look up the verse in your Bible, and fill the blank word.")
-        print("Difficulty selected: SUPER DUPER DIFFICULT\n")
-        ask_question(reference, verse, answer, verse_difficulty)
+        print("Difficulty selected: SUPER DUPER DIFFICULT — 10 verses!\n")
+
+        for verse_num in range(1, 11):
+            reference, verse, answer, verse_difficulty = load_super_verse(SUPER_BIBLE_DB_FILE)
+            print(f"Verse {verse_num} of 10")
+            ask_question(reference, verse, answer, verse_difficulty)
+
+        print("🔥 Wow! You nailed all 10 SUPER DUPER DIFFICULT verses!")
         return
 
     if difficulty != "all":
